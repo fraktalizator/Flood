@@ -6,7 +6,6 @@ gradle-app.setting
 /core/build/
 /lwjgl2/build/
 /lwjgl3/build/
-/html/build/
 /teavm/build/
 /ios/build/
 /ios-moe/build/
@@ -41,17 +40,6 @@ com_crashlytics_export_strings.xml
 /ios/xcode/native/
 /ios/IOSLauncher.app
 /ios/IOSLauncher.app.dSYM
-
-## GWT:
-/html/war/
-/html/gwt-unitCache/
-.apt_generated/
-/html/war/WEB-INF/deploy/
-/html/war/WEB-INF/classes/
-.gwt/
-gwt-unitCache/
-www-test/
-.gwt-tmp/
 
 ## TeaVM:
 # Not sure yet...
