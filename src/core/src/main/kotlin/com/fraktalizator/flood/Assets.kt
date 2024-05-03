@@ -1,4 +1,4 @@
-package com.fraktalizator.flood.configs
+package com.fraktalizator.flood
 
 import com.badlogic.gdx.assets.AssetDescriptor
 import com.badlogic.gdx.assets.AssetManager
@@ -27,13 +27,9 @@ object Assets {
         }
     }
 
-    fun update(): Boolean {
-        return assetManager.update()
-    }
+    fun update() = assetManager.update()
 
-    fun getProgress():Float{
-        return assetManager.progress
-    }
+    fun getProgress() = assetManager.progress
 
     fun queGameAssets() {
         for (textureAssets in TextureAssets.entries) {
@@ -51,27 +47,6 @@ object Assets {
     enum class PreGameTextureAssets(private val path: String) {
         MenuBG("Ui/MenuScreen/BG.jpg");
 
-//        SettingsWindowBG("Ui/SettingsWindow/SettingBackround.png"),
-//
-//        SaveSelectWindowBG("Ui/SaveScreen/saveButtons/selectlevelbackground.png"),
-//        SaveButton("Ui/SaveScreen/saveButtons/save.png"),
-//        SaveButtonSelected("Ui/SaveScreen/saveButtons/saveclick.png"),
-//
-//        SaveCreateWindowBG("Ui/CharacterCreateScreen/CreatorBackground.png"),
-//        CharacterPreviewBG("Ui/CharacterCreateScreen/CharacterPreviewBackground.png"),
-//        CharacterPreviewBGBorder("Ui/CharacterCreateScreen/CharacterPreviewBackgroundBorder.png"),
-//        ClassButton("Ui/CharacterCreateScreen/SelectClass.png"),
-//        ClassButtonSelected("Ui/CharacterCreateScreen/SelectClassClick146x207.png"),
-//
-//        CustomizeOptionBackButton("Ui/CharacterCreateScreen/ArrowButton.png"),
-//        CustomizeOptionBackButtonSelected("Ui/CharacterCreateScreen/ArrowButtonClick.png"),
-//
-//        CustomizeOptionNextButton("Ui/CharacterCreateScreen/ArrowButtonL.png"),
-//
-//        CustomizeOptionNextButtonSelected("Ui/CharacterCreateScreen/ArrowButtonClickL.png"),
-//
-//        CustomizeOptionLabelBackground("Ui/CharacterCreateScreen/StyleText.png");
-
         internal val assetDescriptor: AssetDescriptor<Texture> =
             AssetDescriptor(path, Texture::class.java)
 
@@ -81,14 +56,8 @@ object Assets {
 
     enum class TextureAssets(private val path: String) {
         PlayerMovementAnimation("player.png"),
-//        Stairs("Actors/Interactable/stairs.png"),
-//        InventorySlot("Ui/GameScreen/Hud/Inveontry/eqgrid.png"),
-//        BadApple("Items/Consumable/bad_apple.png"),
         MoveTile("moveTile.png"),
         MoveTileSelected("moveTileSelected.png");
-//        HeavyArm("Spells/Warrior/Talents/heavyArm.png"),
-//        HerbPouch("Spells/Warrior/Talents/heavyArm.png"),
-//        InventoryBG("Ui/GameScreen/Hud/Inveontry/frameeqFilled.png");
 
         val assetDescriptor: AssetDescriptor<Texture> =
             AssetDescriptor(path, Texture::class.java)

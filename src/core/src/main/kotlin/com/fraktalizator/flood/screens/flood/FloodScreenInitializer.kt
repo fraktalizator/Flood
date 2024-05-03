@@ -1,51 +1,58 @@
 package com.fraktalizator.flood.screens.flood
 
+import com.fraktalizator.flood.extension_methods.EnumExtensions.next
 import com.fraktalizator.flood.game_objects.GameWorld
-import com.fraktalizator.flood.screens.AbstractScreen.Companion.game
-import com.fraktalizator.flood.systems.EntityRenderSystem
+import com.fraktalizator.flood.screens.BaseScreen.Companion.game
+import com.fraktalizator.flood.systems.render.EntityRenderSystem
 import com.fraktalizator.flood.systems.MovementSystem
 import com.fraktalizator.flood.utils.Logger
+import kotlin.concurrent.thread
 
 class FloodScreenInitializer {
-    private var task: InitializationTask = InitializationTask.entries[0]
+    private var task: InitializationTasks = InitializationTasks.entries[0]
     lateinit var floodScreen: FloodScreen
         private set
 
     fun loadingInfoString() = task.loadingInfoString//"Loading Assets..."
 
-    fun progress() = task.ordinal.toFloat()/InitializationTask.entries.size
+    fun progress() = task.ordinal.toFloat()/InitializationTasks.entries.size
 
 
     fun update(): Boolean {
         when (task){
-            InitializationTask.LOAD_MAPS -> {
+            InitializationTasks.LOAD_MAPS -> {
                 Logger.log("loading maps")
                 loadMaps()
             }
-            InitializationTask.LOAD_SETTINGS_AND_ENTITIES -> {
+            InitializationTasks.LOAD_SETTINGS_AND_ENTITIES -> {
                 Logger.log("loading maps and entities")
                 loadSettingsAndEntities()
             }
-            InitializationTask.INITIALIZE_WORLD_MAP -> {
+            InitializationTasks.INITIALIZE_WORLD_MAP -> {
                 Logger.log("Initializing world")
                 initializeWorldMap()
             }
-            InitializationTask.LOAD_HUD -> {
+            InitializationTasks.LOAD_HUD -> {
                 Logger.log("Loading HUD")
                 loadHud()
             }
+
+            InitializationTasks.DONE -> {
+                return true
+            }
         }
-        val isLoadingDone = task.ordinal == InitializationTask.entries.size-1
-        if(!isLoadingDone) task = task.next()
-        return isLoadingDone
+        task = task.next()
+        return false
     }
 
 
-    private fun loadMaps() {}
+    private fun loadMaps() {
+        Thread.sleep(1000)
+    }
 
-    private fun loadSettingsAndEntities() {}
+    private fun loadSettingsAndEntities() {Thread.sleep(2000)}
 
-    private fun initializeWorldMap() {}
+    private fun initializeWorldMap() {Thread.sleep(1000)}
 
     private fun loadHud() {
         val gameWorld = GameWorld()
@@ -58,16 +65,4 @@ class FloodScreenInitializer {
     }
 }
 
-private enum class InitializationTask(val loadingInfoString:String){
-    LOAD_MAPS("Loading maps..."),
-    LOAD_SETTINGS_AND_ENTITIES("Loading settings and entities"),
-    INITIALIZE_WORLD_MAP("Initializing world map"),
-    LOAD_HUD("Loading HUD"),
-}
-
-inline fun <reified T: Enum<T>> T.next(): T {
-    val values = enumValues<T>()
-    val nextOrdinal = (ordinal + 1) % values.size
-    return values[nextOrdinal]
-}
 

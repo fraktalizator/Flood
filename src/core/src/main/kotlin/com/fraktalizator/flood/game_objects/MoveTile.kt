@@ -3,7 +3,7 @@ package com.fraktalizator.flood.game_objects
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Vector2
 import com.fraktalizator.flood.componentes.*
-import com.fraktalizator.flood.configs.Assets
+import com.fraktalizator.flood.Assets
 import com.fraktalizator.flood.utils.Pathfinding
 
 class MoveTile(position: Vector2, pathTo: ArrayList<Pathfinding.Direction>) :

@@ -11,6 +11,7 @@ import com.fraktalizator.flood.game_objects.MoveTile
 import com.fraktalizator.flood.game_objects.RenderAbleEntity
 import com.fraktalizator.flood.componentes.*
 import com.fraktalizator.flood.componentes.PositionComponent.Companion.GRIDSIZE
+import com.fraktalizator.flood.systems.render.EntityRenderSystem
 import com.fraktalizator.flood.utils.Pathfinding
 
 class MovementSystem(val gameWorld: GameWorld) : EntitySystem() {

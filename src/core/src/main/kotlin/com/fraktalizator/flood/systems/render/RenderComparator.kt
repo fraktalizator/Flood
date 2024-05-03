@@ -1,4 +1,4 @@
-package com.fraktalizator.flood.systems
+package com.fraktalizator.flood.systems.render
 
 import com.badlogic.ashley.core.ComponentMapper
 import com.badlogic.ashley.core.Entity

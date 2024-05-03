@@ -8,7 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer
 import com.badlogic.gdx.math.Vector2
 import com.fraktalizator.flood.componentes.*
-import com.fraktalizator.flood.configs.Assets
+import com.fraktalizator.flood.Assets
 import com.fraktalizator.flood.componentes.PositionComponent.Companion.GRIDSIZE
 
 class GameWorld : EntityListener {

@@ -6,7 +6,7 @@ com.badlogic.gdx.graphics.g2d.BitmapFont: {
 	title: {
 		file: title.fnt
 	}
-	antek: {
+	regular: {
 		file: font.fnt
 	}
 	aleo_regular_small:{

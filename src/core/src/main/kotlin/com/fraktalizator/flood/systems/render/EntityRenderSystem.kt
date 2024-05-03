@@ -1,4 +1,4 @@
-package com.fraktalizator.flood.systems
+package com.fraktalizator.flood.systems.render
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.Family
@@ -8,8 +8,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.fraktalizator.flood.componentes.PositionComponent
 import com.fraktalizator.flood.componentes.RenderComponent
 
-class EntityRenderSystem(private val batch: SpriteBatch, private val camera: Camera) :
-    SortedIteratingSystem(
+class EntityRenderSystem(
+    private val batch: SpriteBatch,
+    private val camera: Camera
+) : SortedIteratingSystem(
         Family.all(PositionComponent::class.java, RenderComponent::class.java).get(),
         RenderComparator()
     ) {

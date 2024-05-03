@@ -3,7 +3,6 @@ package com.fraktalizator.flood
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.fraktalizator.flood.configs.Assets
 import com.fraktalizator.flood.screens.splash.SplashScreen
 import ktx.app.KtxGame
 import ktx.app.KtxScreen

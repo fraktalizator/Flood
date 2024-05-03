@@ -4,12 +4,12 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar
-import com.fraktalizator.flood.configs.Assets
-import com.fraktalizator.flood.screens.AbstractScreen
+import com.fraktalizator.flood.Assets
+import com.fraktalizator.flood.screens.BaseScreen
 import com.fraktalizator.flood.screens.flood.FloodScreen
 import com.fraktalizator.flood.screens.flood.FloodScreenInitializer
 
-class LoadingScreen : AbstractScreen() {
+class LoadingScreen : BaseScreen() {
     private val backgroundSprite: Sprite
     private val progressBar: ProgressBar
     private var floodScreenInitializer = FloodScreenInitializer()
@@ -20,30 +20,30 @@ class LoadingScreen : AbstractScreen() {
 
         backgroundSprite = Sprite(Texture(Gdx.files.internal("Ui/MenuScreen/BG.jpg")))
 
+        //create loading progress bar
         progressBar = ProgressBar(0f, 1f, 0.01f, false, Assets.skin)
         progressBar.width = 300f
         progressBar.height = 30f
+        val scrCenterForProgressBar = getScreenCenterFor(progressBar.width, progressBar.height)
         progressBar.setPosition(
-            Gdx.graphics.width / 2f - progressBar.width / 2,
-            Gdx.graphics.height / 2.5f - progressBar.height / 2
+            scrCenterForProgressBar.x,
+            scrCenterForProgressBar.y
         )
         stage.addActor(progressBar)
     }
 
 
-    override fun update(delta: Float) {
-        load()
+    override fun update(delta: Float) = load()
 
-        bach.begin()
+    override fun draw(delta: Float) {
         backgroundSprite.draw(stage.batch)
-        val scrCenterForProgressBar = getScreenCenterFor(progressBar.width, progressBar.height)
-        skin.getFont("antek").draw(
+
+        skin.getFont("regular").draw(
             bach,
             floodScreenInitializer.loadingInfoString(),
-            scrCenterForProgressBar.x,
-            scrCenterForProgressBar.y
+            progressBar.x,
+            progressBar.y
         )
-        bach.end()
     }
 
     private fun load() {
