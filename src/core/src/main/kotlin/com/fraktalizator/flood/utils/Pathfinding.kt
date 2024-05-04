@@ -2,7 +2,7 @@ package com.fraktalizator.flood.utils
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
 import com.badlogic.gdx.math.Vector2
-import com.fraktalizator.flood.game_objects.GameWorld
+import com.fraktalizator.flood.GameWorld
 import com.fraktalizator.flood.componentes.PositionComponent.Companion.GRIDSIZE
 import kotlin.math.abs
 

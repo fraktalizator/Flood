@@ -1,4 +1,4 @@
-package com.fraktalizator.flood.game_objects
+package com.fraktalizator.flood
 
 import com.badlogic.ashley.core.Engine
 import com.badlogic.ashley.core.Entity
@@ -8,8 +8,9 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer
 import com.badlogic.gdx.math.Vector2
 import com.fraktalizator.flood.componentes.*
-import com.fraktalizator.flood.Assets
+import com.fraktalizator.flood.assets.Assets
 import com.fraktalizator.flood.componentes.PositionComponent.Companion.GRIDSIZE
+import com.fraktalizator.flood.game_objects.RenderAbleEntity
 
 class GameWorld : EntityListener {
     val tiledMap: TiledMap = Assets.MapAssets.TutorialIsland.map

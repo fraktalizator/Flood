@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.utils.ScreenUtils
-import com.fraktalizator.flood.Assets
+import com.fraktalizator.flood.assets.Assets
 import com.fraktalizator.flood.Flood
 import com.fraktalizator.flood.screens.loading.LoadingScreen
 import ktx.app.KtxScreen

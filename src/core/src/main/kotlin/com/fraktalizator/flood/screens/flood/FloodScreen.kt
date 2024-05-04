@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.math.Vector2
 import com.fraktalizator.flood.componentes.PositionComponent
-import com.fraktalizator.flood.game_objects.EntityInputManager
-import com.fraktalizator.flood.game_objects.GameWorld
+import com.fraktalizator.flood.EntityInputManager
+import com.fraktalizator.flood.GameWorld
 import com.fraktalizator.flood.screens.BaseScreen
 
 class FloodScreen(private val gameWorld: GameWorld) : BaseScreen(){

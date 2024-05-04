@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar
-import com.fraktalizator.flood.Assets
+import com.fraktalizator.flood.assets.Assets
 import com.fraktalizator.flood.screens.BaseScreen
 import com.fraktalizator.flood.screens.flood.FloodScreen
 import com.fraktalizator.flood.screens.flood.FloodScreenInitializer

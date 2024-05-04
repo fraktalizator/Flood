@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.fraktalizator.flood.extension_methods.Vector2Operators.minus
 import com.fraktalizator.flood.Flood
-import com.fraktalizator.flood.Assets
+import com.fraktalizator.flood.assets.Assets
 import ktx.app.KtxScreen
 
 abstract class BaseScreen : KtxScreen {

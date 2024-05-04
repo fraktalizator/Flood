@@ -1,12 +1,11 @@
 package com.fraktalizator.flood.screens.flood
 
 import com.fraktalizator.flood.extension_methods.EnumExtensions.next
-import com.fraktalizator.flood.game_objects.GameWorld
+import com.fraktalizator.flood.GameWorld
 import com.fraktalizator.flood.screens.BaseScreen.Companion.game
 import com.fraktalizator.flood.systems.render.EntityRenderSystem
 import com.fraktalizator.flood.systems.MovementSystem
 import com.fraktalizator.flood.utils.Logger
-import kotlin.concurrent.thread
 
 class FloodScreenInitializer {
     private var task: InitializationTasks = InitializationTasks.entries[0]

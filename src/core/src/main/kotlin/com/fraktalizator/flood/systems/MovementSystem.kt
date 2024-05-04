@@ -4,7 +4,7 @@ import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.EntitySystem
 import com.badlogic.ashley.core.Family
 import com.badlogic.gdx.math.Vector2
-import com.fraktalizator.flood.game_objects.GameWorld
+import com.fraktalizator.flood.GameWorld
 import java.util.function.Consumer
 
 import com.fraktalizator.flood.game_objects.MoveTile
@@ -73,8 +73,7 @@ class MovementSystem(val gameWorld: GameWorld) : EntitySystem() {
             Consumer<RenderAbleEntity> { ent ->
                 pathDisplay(path)
             }
-
-        //moveTile.getComponent(HoverHandlingComponent::class.java).setOnHoverAction(displayPathToAction)
+        moveTile.add(HoverHandlingComponent(displayPathToAction) {})
         moveTile.getComponent(TouchHandlingComponent::class.java).LeftClickAction = Consumer<RenderAbleEntity>{
             gameWorld.entities.remove(currentSelectedEntity!!.getComponent(PositionComponent::class.java).position)
             initMoveEntity(it as MoveTile)
@@ -145,7 +144,7 @@ class MovementSystem(val gameWorld: GameWorld) : EntitySystem() {
             currentSelectedMoveTiles[i]!!.unSelect()
         }
         for (direction in directions) {
-            pos.add(Vector2(direction.targetTilePos).scl(GRIDSIZE.toFloat()))
+            pos.add(Vector2(direction.targetTilePos).scl(GRIDSIZE))
             moveTilesAndPositions[pos]!!.select()
             currentSelectedMoveTiles.add(moveTilesAndPositions[pos])
         }

@@ -3,7 +3,7 @@ package com.fraktalizator.flood.game_objects
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Vector2
 import com.fraktalizator.flood.componentes.*
-import com.fraktalizator.flood.Assets
+import com.fraktalizator.flood.assets.Assets
 import com.fraktalizator.flood.utils.Pathfinding
 
 class MoveTile(position: Vector2, pathTo: ArrayList<Pathfinding.Direction>) :
@@ -15,11 +15,11 @@ class MoveTile(position: Vector2, pathTo: ArrayList<Pathfinding.Direction>) :
         println("Move tile init")
         val pathToTileComponent: PathToTileComponent = PathToTileComponent(pathTo)
         getComponent(PositionComponent::class.java).height = 32f
-        val hoverHandlingComponent: HoverHandlingComponent = HoverHandlingComponent({select()}, {unSelect()})
+        //val hoverHandlingComponent: HoverHandlingComponent = HoverHandlingComponent({select()}, {unSelect()})
         val touchHandlingComponent: TouchHandlingComponent = TouchHandlingComponent({}, {})
         getComponent(RenderComponent::class.java).zindex = (0)
         this.add(pathToTileComponent)
-        this.add(hoverHandlingComponent)
+        //this.add(hoverHandlingComponent)
         this.add(touchHandlingComponent)
         println("Move tile init done")
     }

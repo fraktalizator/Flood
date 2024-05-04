@@ -1,4 +1,4 @@
-package com.fraktalizator.flood.game_objects
+package com.fraktalizator.flood
 
 import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.math.Vector2
@@ -8,6 +8,7 @@ import com.fraktalizator.flood.componentes.HoverHandlingComponent
 import com.fraktalizator.flood.componentes.PositionComponent.Companion.GRIDSIZE
 import com.fraktalizator.flood.componentes.RenderComponent
 import com.fraktalizator.flood.componentes.TouchHandlingComponent
+import com.fraktalizator.flood.game_objects.RenderAbleEntity
 
 class EntityInputManager(private val floodScreenViewport: Viewport, private val gameWorld: GameWorld) : InputProcessor {
     /*
@@ -77,7 +78,7 @@ class EntityInputManager(private val floodScreenViewport: Viewport, private val 
     /*
     ------------------------------------ Main Functions ------------------------------------
      */
-    private fun unHoverEntities(exceptionEntity:RenderAbleEntity){
+    private fun unHoverEntities(exceptionEntity: RenderAbleEntity){
         for (entity in gameWorld.entities.values) {
             val hovComp = entity.getComponent(HoverHandlingComponent::class.java) ?: continue
 
@@ -88,7 +89,7 @@ class EntityInputManager(private val floodScreenViewport: Viewport, private val 
         }
     }
 
-    private fun hoverEntity(clickedEnt:RenderAbleEntity): Boolean{
+    private fun hoverEntity(clickedEnt: RenderAbleEntity): Boolean{
         val hovCompForSelectedEntity = clickedEnt.getComponent(HoverHandlingComponent::class.java) ?: return false // do nothing if hover handling undefined
         if (!hovCompForSelectedEntity.hovered) {
             hovCompForSelectedEntity.onHoverAction.accept(clickedEnt)
