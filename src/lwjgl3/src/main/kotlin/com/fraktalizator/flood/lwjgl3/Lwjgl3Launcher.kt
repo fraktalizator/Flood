@@ -10,7 +10,7 @@ import com.fraktalizator.flood.Flood
 fun main() {
     // This handles macOS support and helps on Windows.
     if (StartupHelper.startNewJvmIfRequired())
-      return
+        return
     Lwjgl3Application(Flood, Lwjgl3ApplicationConfiguration().apply {
         setTitle("Flood Algorithm")
         setWindowedMode(640, 480)

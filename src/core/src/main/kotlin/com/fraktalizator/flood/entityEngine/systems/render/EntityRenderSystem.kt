@@ -1,20 +1,18 @@
-package com.fraktalizator.flood.systems.render
+package com.fraktalizator.flood.entityEngine.systems.render
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.Family
 import com.badlogic.ashley.systems.SortedIteratingSystem
-import com.badlogic.gdx.graphics.Camera
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.fraktalizator.flood.componentes.PositionComponent
-import com.fraktalizator.flood.componentes.RenderComponent
+import com.fraktalizator.flood.entityEngine.componentes.PositionComponent
+import com.fraktalizator.flood.entityEngine.componentes.RenderComponent
 
 class EntityRenderSystem(
-    private val batch: SpriteBatch,
-    private val camera: Camera
+    private val batch: SpriteBatch
 ) : SortedIteratingSystem(
-        Family.all(PositionComponent::class.java, RenderComponent::class.java).get(),
-        RenderComparator()
-    ) {
+    Family.all(PositionComponent::class.java, RenderComponent::class.java).get(),
+    RenderComparator()
+) {
     override fun processEntity(entity: Entity, deltaTime: Float) {
         val renderComponent: RenderComponent = entity.getComponent(RenderComponent::class.java)
         if (!renderComponent.isVisible) return
@@ -23,11 +21,10 @@ class EntityRenderSystem(
 
         if (!renderComponent.freezeAnimation) renderComponent.elapsedTime = (renderComponent.elapsedTime + deltaTime)
 
-        batch.projectionMatrix = camera.combined
         batch.begin()
         if (renderComponent.isAnimate) {
             batch.draw(
-                renderComponent.playerAnimation.get(renderComponent.posFrame)
+                renderComponent.playerAnimation[renderComponent.posFrame]
                     .getKeyFrame(renderComponent.elapsedTime, true),
                 positionComponent.x,
                 positionComponent.y

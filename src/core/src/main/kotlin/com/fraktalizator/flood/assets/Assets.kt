@@ -45,6 +45,10 @@ object Assets {
         get() = assetManager.get(skinAssetDescriptor)
 
     enum class PreGameTextureAssets(private val path: String) {
+        SETTINGS_WINDOW_BACKGROUND("Ui/SettingsWindow/SettingBackground.png"),
+        SETTINGS_BUTTON_PRESSED("Ui/SettingsWindow/ButtonSettingsPress.png"),
+        SETTINGS_BUTTON_NORMAL("Ui/SettingsWindow/ButtonSetting.png"),
+        SETTINGS_SHOW_BUTTON("Ui/SettingsWindow/settings.png"),
         MenuBG("Ui/MenuScreen/BG.jpg");
 
         internal val assetDescriptor: AssetDescriptor<Texture> =

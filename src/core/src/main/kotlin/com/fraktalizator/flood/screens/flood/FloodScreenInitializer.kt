@@ -1,10 +1,9 @@
 package com.fraktalizator.flood.screens.flood
 
+import com.fraktalizator.flood.assets.Assets
+import com.fraktalizator.flood.entityEngine.WorldEngineInitializer
 import com.fraktalizator.flood.extension_methods.EnumExtensions.next
-import com.fraktalizator.flood.GameWorld
-import com.fraktalizator.flood.screens.BaseScreen.Companion.game
-import com.fraktalizator.flood.systems.render.EntityRenderSystem
-import com.fraktalizator.flood.systems.MovementSystem
+import com.fraktalizator.flood.ui.settings.SettingsWindow
 import com.fraktalizator.flood.utils.Logger
 
 class FloodScreenInitializer {
@@ -14,26 +13,31 @@ class FloodScreenInitializer {
 
     fun loadingInfoString() = task.loadingInfoString//"Loading Assets..."
 
-    fun progress() = task.ordinal.toFloat()/InitializationTasks.entries.size
-
+    fun progress() = task.ordinal.toFloat() / InitializationTasks.entries.size
 
     fun update(): Boolean {
-        when (task){
+        when (task) {
             InitializationTasks.LOAD_MAPS -> {
                 Logger.log("loading maps")
                 loadMaps()
             }
+
             InitializationTasks.LOAD_SETTINGS_AND_ENTITIES -> {
                 Logger.log("loading maps and entities")
                 loadSettingsAndEntities()
             }
+
             InitializationTasks.INITIALIZE_WORLD_MAP -> {
                 Logger.log("Initializing world")
                 initializeWorldMap()
             }
+
             InitializationTasks.LOAD_HUD -> {
                 Logger.log("Loading HUD")
                 loadHud()
+                val worldEngineInitializer = WorldEngineInitializer(Assets.MapAssets.TutorialIsland.map)
+                worldEngineInitializer.initNPC()
+                floodScreen = FloodScreen(worldEngineInitializer, SettingsWindow())
             }
 
             InitializationTasks.DONE -> {
@@ -46,22 +50,14 @@ class FloodScreenInitializer {
 
 
     private fun loadMaps() {
-        Thread.sleep(1000)
+        //Thread.sleep(1000)//TODO
     }
 
-    private fun loadSettingsAndEntities() {Thread.sleep(2000)}
+    private fun loadSettingsAndEntities() {}//Thread.sleep(2000)}//TODO
 
-    private fun initializeWorldMap() {Thread.sleep(1000)}
+    private fun initializeWorldMap() {}//Thread.sleep(1000)}//TODO
 
-    private fun loadHud() {
-        val gameWorld = GameWorld()
-        gameWorld.initNPC()
-        floodScreen = FloodScreen(gameWorld)
-        val movementSystem = MovementSystem(gameWorld)
-        gameWorld.engine.addSystem(EntityRenderSystem(game.mainBatch, floodScreen.camera))
-        gameWorld.engine.addSystem(movementSystem)
-
-    }
+    private fun loadHud() {}//TODO
 }
 
 

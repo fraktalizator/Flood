@@ -1,4 +1,4 @@
-package com.fraktalizator.flood.componentes
+package com.fraktalizator.flood.entityEngine.componentes
 
 import com.badlogic.ashley.core.Component
 import com.badlogic.gdx.graphics.Texture
@@ -6,7 +6,8 @@ import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.fraktalizator.flood.utils.AnimationGenerator
 
-class RenderComponent : Component {//todo refactor
+class RenderComponent : Component {
+    //todo refactor
     //for non animated entities
     var texture: Texture? = null
 

@@ -1,4 +1,4 @@
-package com.fraktalizator.flood.componentes
+package com.fraktalizator.flood.entityEngine.componentes
 
 import com.badlogic.ashley.core.Component
 

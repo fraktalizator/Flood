@@ -1,13 +1,10 @@
-package com.fraktalizator.flood.utils
+package com.fraktalizator.flood.pathfinding_alghoritms
 
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
 import com.badlogic.gdx.math.Vector2
-import com.fraktalizator.flood.GameWorld
-import com.fraktalizator.flood.componentes.PositionComponent.Companion.GRIDSIZE
+import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRIDSIZE
 import kotlin.math.abs
 
-class Pathfinding(GameWorld: GameWorld) {
-    private val GameWorld: GameWorld = GameWorld
+class Pathfinding(private val getTileCost: (Vector2) -> Int) : IPathfindingAlgorithm {
 
     fun isPathValid(startNodePos: Vector2, endNodePos: Vector2, range: Int): Boolean {
         val positionAndMoveCosts = flood(startNodePos, range)
@@ -140,9 +137,9 @@ class Pathfinding(GameWorld: GameWorld) {
         for (i in directions.indices.reversed()) {
             val direction = directions[i]
             if (direction == Direction.Left) directionsReversed += (Direction.Right)
-            else if (direction == Direction.Right) directionsReversed  += (Direction.Left)
-            else if (direction == Direction.Up) directionsReversed  += (Direction.Down)
-            else if (direction == Direction.Down) directionsReversed  += (Direction.Up)
+            else if (direction == Direction.Right) directionsReversed += (Direction.Left)
+            else if (direction == Direction.Up) directionsReversed += (Direction.Down)
+            else if (direction == Direction.Down) directionsReversed += (Direction.Up)
         }
         return directionsReversed
     }
@@ -307,15 +304,15 @@ class Pathfinding(GameWorld: GameWorld) {
         return positionAndMoveCosts
     }
 
-    private fun getTileCost(position: Vector2): Int {
-        val cell = (GameWorld.tiledMap.getLayers().get(0) as TiledMapTileLayer).getCell(
-            position.x.toInt() / GRIDSIZE.toInt(),
-            position.y.toInt() / GRIDSIZE.toInt()
-        )
-            ?: return 9999
-        if (GameWorld.entities.get(position) != null) return GameWorld.entities.get(position)!!.moveCost
-        return cell.tile.properties["moveCost"].toString().toInt()
-    }
+//    private fun getTileCost(position: Vector2): Int {
+//        val cell = (WorldEngineInitializer.tiledMap.getLayers().get(0) as TiledMapTileLayer).getCell(
+//            position.x.toInt() / GRIDSIZE.toInt(),
+//            position.y.toInt() / GRIDSIZE.toInt()
+//        )
+//            ?: return 9999
+//        if (WorldEngineInitializer.entities.get(position) != null) return WorldEngineInitializer.entities.get(position)!!.moveCost
+//        return cell.tile.properties["moveCost"].toString().toInt()
+//    }
 
     private fun hashMapInit(range: Int, position: Vector2): HashMap<Vector2, Int> {
         val positionAndMoveCosts = HashMap<Vector2, Int>()
@@ -331,23 +328,7 @@ class Pathfinding(GameWorld: GameWorld) {
         return positionAndMoveCosts
     }
 
-    enum class Direction(direction: String, var posFrame: Int) {
-        Up("u", 0),
-        Right("r", 1),
-        Down("d", 2),
-        Left("l", 3);
-
-        var targetTilePos: Vector2 = Vector2(0f, 0f)
-
-        init {
-            when (direction) {
-                "u" -> targetTilePos = Vector2(0f, 1f)
-                "l" -> targetTilePos = Vector2(-1f, 0f)
-                "d" -> targetTilePos = Vector2(0f, -1f)
-                "r" -> targetTilePos = Vector2(1f, 0f)
-            }
-        }
-    } //    private ArrayList<Directions> getDirectionsToCalculate(int n, Vector2 position, Vector2 tile){
+    //    private ArrayList<Directions> getDirectionsToCalculate(int n, Vector2 position, Vector2 tile){
     //        ArrayList<Directions> directionsToCalculate = new ArrayList<>(4);
     //        if( n == 0){
     //            directionsToCalculate.add(Directions.North);

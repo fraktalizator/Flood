@@ -8,7 +8,7 @@ import com.fraktalizator.flood.screens.splash.SplashScreen
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
 
-object Flood: KtxGame<KtxScreen>(){
+object Flood : KtxGame<KtxScreen>() {
     const val WIDTH_SCALE = 16f
     const val HEIGHT_SCALE = 9f
     const val VIEWPORT_WIDTH = 64 * WIDTH_SCALE

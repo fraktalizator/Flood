@@ -23,13 +23,19 @@ Used under the CC BY license.
 http://creativecommons.org/licenses/by/4.0/
 ```
 
-Features styles of most of **Scene2D** widgets. Simplistic UI in style of (corporate) desktop applications. [Example project](https://ray3k.wordpress.com/cloud-form-ui-skin-for-libgdx/) contains example implementation of a radial progress bar.
+Features styles of most of **Scene2D** widgets. Simplistic UI in style of (corporate) desktop
+applications. [Example project](https://ray3k.wordpress.com/cloud-form-ui-skin-for-libgdx/) contains example
+implementation of a radial progress bar.
 
 ![Cloud Form](preview.gif)
 
 ### About
 
-Created with [Skin Composer](https://github.com/raeleus/skin-composer) by [**Raeleus**](https://ray3k.wordpress.com/cloud-form-ui-skin-for-libgdx/).
+Created with [Skin Composer](https://github.com/raeleus/skin-composer) by [**Raeleus
+**](https://ray3k.wordpress.com/cloud-form-ui-skin-for-libgdx/).
 
 ### License
-[CC BY 4.0](http://creativecommons.org/licenses/by/4.0/). See the quote above for more data. Give credit to [***Raymond "Raeleus" Buckley***](https://ray3k.wordpress.com/software/skin-composer-for-libgdx/) and [Vincenzo Vuono](http://www.vincenzovuono.com) if you use the fonts.
+
+[CC BY 4.0](http://creativecommons.org/licenses/by/4.0/). See the quote above for more data. Give credit to [
+***Raymond "Raeleus" Buckley***](https://ray3k.wordpress.com/software/skin-composer-for-libgdx/)
+and [Vincenzo Vuono](http://www.vincenzovuono.com) if you use the fonts.

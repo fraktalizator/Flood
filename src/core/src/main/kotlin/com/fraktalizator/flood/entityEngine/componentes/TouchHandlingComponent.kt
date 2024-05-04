@@ -1,7 +1,7 @@
-package com.fraktalizator.flood.componentes
+package com.fraktalizator.flood.entityEngine.componentes
 
 import com.badlogic.ashley.core.Component
-import com.fraktalizator.flood.game_objects.RenderAbleEntity
+import com.fraktalizator.flood.entityEngine.entities.RenderAbleEntity
 import java.util.function.Consumer
 
 data class TouchHandlingComponent(

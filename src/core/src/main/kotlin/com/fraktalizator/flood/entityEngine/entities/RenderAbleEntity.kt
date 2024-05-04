@@ -1,4 +1,4 @@
-package com.fraktalizator.flood.game_objects
+package com.fraktalizator.flood.entityEngine.entities
 
 import com.badlogic.ashley.core.Engine
 import com.badlogic.ashley.core.Entity
@@ -6,11 +6,11 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.Vector2
 import com.fraktalizator.flood.Flood
-import com.fraktalizator.flood.componentes.PositionComponent
-import com.fraktalizator.flood.componentes.PositionComponent.Companion.GRIDSIZE
-import com.fraktalizator.flood.componentes.RenderComponent
+import com.fraktalizator.flood.entityEngine.componentes.PositionComponent
+import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRIDSIZE
+import com.fraktalizator.flood.entityEngine.componentes.RenderComponent
+import com.fraktalizator.flood.entityEngine.systems.MovementSystem
 import com.fraktalizator.flood.screens.flood.FloodScreen
-import com.fraktalizator.flood.systems.MovementSystem
 
 open class RenderAbleEntity(position: Vector2, texture: Texture?, animate: Boolean) : Entity() {
     var moveCost: Int = 9999
@@ -35,7 +35,7 @@ open class RenderAbleEntity(position: Vector2, texture: Texture?, animate: Boole
     protected val engine: Engine
         get() = ((Gdx.app.applicationListener as Flood).getScreen() as FloodScreen).engine
 
-    fun move(){
+    fun move() {
         engine.getSystem(MovementSystem::class.java).SelectEntity(this)
     }
 }

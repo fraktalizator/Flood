@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2020 damios
  *
@@ -39,6 +38,7 @@ class StartupHelper private constructor() {
 
     companion object {
         private const val JVM_RESTARTED_ARG = "jvmIsRestarted"
+
         /**
          * Starts a new JVM if the application was started on macOS without the
          * `-XstartOnFirstThread` argument. This also includes some code for

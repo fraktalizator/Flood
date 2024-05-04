@@ -1,12 +1,15 @@
-package com.fraktalizator.flood.game_objects
+package com.fraktalizator.flood.entityEngine.entities
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Vector2
-import com.fraktalizator.flood.componentes.*
 import com.fraktalizator.flood.assets.Assets
-import com.fraktalizator.flood.utils.Pathfinding
+import com.fraktalizator.flood.entityEngine.componentes.PathToTileComponent
+import com.fraktalizator.flood.entityEngine.componentes.PositionComponent
+import com.fraktalizator.flood.entityEngine.componentes.RenderComponent
+import com.fraktalizator.flood.entityEngine.componentes.TouchHandlingComponent
+import com.fraktalizator.flood.pathfinding_alghoritms.Direction
 
-class MoveTile(position: Vector2, pathTo: ArrayList<Pathfinding.Direction>) :
+class MoveTile(position: Vector2, pathTo: ArrayList<Direction>) :
     RenderAbleEntity(position, Assets.TextureAssets.MoveTile.texture, false) {
     private val moveTileTexture: TextureRegion = TextureRegion(Assets.TextureAssets.MoveTile.texture)
     private val moveTileSelectedTexture: TextureRegion = TextureRegion(Assets.TextureAssets.MoveTileSelected.texture)

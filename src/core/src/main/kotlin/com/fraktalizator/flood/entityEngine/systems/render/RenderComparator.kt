@@ -1,8 +1,8 @@
-package com.fraktalizator.flood.systems.render
+package com.fraktalizator.flood.entityEngine.systems.render
 
 import com.badlogic.ashley.core.ComponentMapper
 import com.badlogic.ashley.core.Entity
-import com.fraktalizator.flood.componentes.RenderComponent
+import com.fraktalizator.flood.entityEngine.componentes.RenderComponent
 
 class RenderComparator : Comparator<Entity?> {
     private val cmTrans: ComponentMapper<RenderComponent> = ComponentMapper.getFor(RenderComponent::class.java)

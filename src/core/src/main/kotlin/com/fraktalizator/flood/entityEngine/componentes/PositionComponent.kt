@@ -1,10 +1,10 @@
-package com.fraktalizator.flood.componentes
+package com.fraktalizator.flood.entityEngine.componentes
 
 import com.badlogic.ashley.core.Component
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 
-class PositionComponent (x: Float, y:Float, width: Float, height: Float) : Component {
+class PositionComponent(x: Float, y: Float, width: Float, height: Float) : Component {
     companion object {
         const val GRIDSIZE: Float = 32f
     }
@@ -48,4 +48,7 @@ class PositionComponent (x: Float, y:Float, width: Float, height: Float) : Compo
         this.bounds = Rectangle(x, y, width, height)
     }
 
+    init {
+        updateBounds()
+    }
 }

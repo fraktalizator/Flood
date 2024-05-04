@@ -7,26 +7,27 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.Stage
-import com.badlogic.gdx.scenes.scene2d.ui.*
+import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.utils.viewport.ExtendViewport
-import com.fraktalizator.flood.extension_methods.Vector2Operators.minus
 import com.fraktalizator.flood.Flood
 import com.fraktalizator.flood.assets.Assets
+import com.fraktalizator.flood.extension_methods.Vector2Operators.minus
 import ktx.app.KtxScreen
 
 abstract class BaseScreen : KtxScreen {
     val stage: Stage = Stage(ExtendViewport(Flood.VIEWPORT_HEIGHT, Flood.VIEWPORT_WIDTH), bach)
-    val camera:OrthographicCamera = stage.camera as OrthographicCamera
-    val viewport:ExtendViewport = stage.viewport as ExtendViewport
+    val camera: OrthographicCamera = stage.camera as OrthographicCamera
+    val viewport: ExtendViewport = stage.viewport as ExtendViewport
+
     companion object {
         const val enableSceneDebug = true
         val clearColor = Color(0f, 0f, 0f, 1f)
         val skin: Skin = Assets.skin
         val game: Flood = Flood
-        val bach:SpriteBatch = Flood.mainBatch
+        val bach: SpriteBatch = Flood.mainBatch
     }
 
-    init{
+    init {
         if (enableSceneDebug) {
             stage.setDebugUnderMouse(true)
             stage.setDebugTableUnderMouse(true)
@@ -48,8 +49,8 @@ abstract class BaseScreen : KtxScreen {
         stage.draw()
     }
 
-    open fun update(delta: Float){}
-    open fun draw(delta: Float){}
+    open fun update(delta: Float) {}
+    open fun draw(delta: Float) {}
 
     override fun resize(width: Int, height: Int) {
         stage.viewport.update(width, height, false)
@@ -61,7 +62,7 @@ abstract class BaseScreen : KtxScreen {
     fun getScreenCenter() = Vector2(Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())//.scl(1/2f)
 
     fun getScreenCenterFor(width: Float, height: Float) = getScreenCenterFor(Vector2(width, height))
-    fun getScreenCenterFor(objectSize:Vector2) = getScreenCenter() - Vector2(objectSize).scl(1/2f)
+    fun getScreenCenterFor(objectSize: Vector2) = getScreenCenter() - Vector2(objectSize).scl(1 / 2f)
 
     override fun dispose() = stage.dispose()
 
