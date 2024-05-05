@@ -5,7 +5,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.math.Vector2
 import com.fraktalizator.flood.assets.Assets
 import com.fraktalizator.flood.entityEngine.componentes.*
-import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRIDSIZE
+import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRID_SIZE
 import com.fraktalizator.flood.entityEngine.entities.RenderAbleEntity
 import com.fraktalizator.flood.entityEngine.systems.input.InputSystem
 import com.fraktalizator.flood.entityEngine.systems.MovementSystem
@@ -30,7 +30,7 @@ class WorldEngineInitializer(private val tiledMap: TiledMap){
 
     fun initNPC(): Boolean {
         val character = RenderAbleEntity(
-            Vector2(2 * GRIDSIZE, 3 * GRIDSIZE),
+            Vector2(2 * GRID_SIZE, 3 * GRID_SIZE),
             Assets.TextureAssets.PlayerMovementAnimation.texture, true
         )
         character.add(MoveComponent(12, MoveType.Normal))
@@ -38,6 +38,17 @@ class WorldEngineInitializer(private val tiledMap: TiledMap){
         character.add(TouchHandlingComponent({ ent -> ent.move() }, {}))// odpalic metode move
 
         engine.addEntity(character)
+
+
+        val character2 = RenderAbleEntity(
+            Vector2(2 * GRID_SIZE, 4 * GRID_SIZE),
+            Assets.TextureAssets.PlayerMovementAnimation.texture, true
+        )
+        character2.add(MoveComponent(17, MoveType.Normal))
+        character2.add(NameComponent("tomek2"))
+        character2.add(TouchHandlingComponent({ ent -> ent.move() }, {}))// odpalic metode move
+
+        engine.addEntity(character2)
         return true
     }
 }

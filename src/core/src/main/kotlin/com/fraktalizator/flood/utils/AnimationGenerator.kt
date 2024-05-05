@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 
 object AnimationGenerator {
+    /**
+     * !Important: Assumes animation contain 4x4 animation sprite set
+     */
     fun setUpAnimation(animationTexture: Texture?): ArrayList<Animation<TextureRegion>> {
         val animation = ArrayList<Animation<TextureRegion>>(5)
         val tmp = TextureRegion.split(animationTexture, 32, 48)

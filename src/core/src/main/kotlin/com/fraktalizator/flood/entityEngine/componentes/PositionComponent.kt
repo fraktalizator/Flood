@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2
 
 class PositionComponent(x: Float, y: Float, width: Float, height: Float) : Component {
     companion object {
-        const val GRIDSIZE: Float = 32f
+        const val GRID_SIZE: Float = 32f
     }
 
     var bounds: Rectangle = Rectangle(0f, 0f, 0f, 0f)
@@ -44,11 +44,13 @@ class PositionComponent(x: Float, y: Float, width: Float, height: Float) : Compo
             bounds = Rectangle(x, y, width, height)
         }
 
-    private fun updateBounds() {
-        this.bounds = Rectangle(x, y, width, height)
-    }
+    fun getTilePosition() = position.scl(1/ GRID_SIZE).also { x.toInt(); y.toInt() }
 
     init {
         updateBounds()
+    }
+
+    private fun updateBounds() {
+        this.bounds = Rectangle(x, y, width, height)
     }
 }

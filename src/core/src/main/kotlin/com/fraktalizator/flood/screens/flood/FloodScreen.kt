@@ -18,7 +18,7 @@ class FloodScreen(
     internal val engine = worldEngineInitializer.engine
 
     //private val entityInputManager = EntityInputManager(viewport, worldEngineInitializer)
-    private val cameraSpeed = PositionComponent.GRIDSIZE * 25
+    private val cameraSpeed = PositionComponent.GRID_SIZE * 25
 
     override fun show() {
         //Gdx.input.inputProcessor = entityInputManager

@@ -1,7 +1,7 @@
 package com.fraktalizator.flood.pathfinding_alghoritms
 
 import com.badlogic.gdx.math.Vector2
-import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRIDSIZE
+import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRID_SIZE
 import kotlin.math.abs
 
 class Pathfinding(private val getTileCost: (Vector2) -> Int) : IPathfindingAlgorithm {
@@ -24,10 +24,10 @@ class Pathfinding(private val getTileCost: (Vector2) -> Int) : IPathfindingAlgor
             if (positionAndMoveCosts[currentPosition] == 0) {
                 return directionsReversed
             }
-            val upTilePositon = Vector2(currentPosition.x + 0 * GRIDSIZE, currentPosition.y + 1 * GRIDSIZE)
-            val rightTilePositon = Vector2(currentPosition.x + 1 * GRIDSIZE, currentPosition.y + 0 * GRIDSIZE)
-            val downTilePositon = Vector2(currentPosition.x + 0 * GRIDSIZE, currentPosition.y - 1 * GRIDSIZE)
-            val leftTilePositon = Vector2(currentPosition.x - 1 * GRIDSIZE, currentPosition.y + 0 * GRIDSIZE)
+            val upTilePositon = Vector2(currentPosition.x + 0 * GRID_SIZE, currentPosition.y + 1 * GRID_SIZE)
+            val rightTilePositon = Vector2(currentPosition.x + 1 * GRID_SIZE, currentPosition.y + 0 * GRID_SIZE)
+            val downTilePositon = Vector2(currentPosition.x + 0 * GRID_SIZE, currentPosition.y - 1 * GRID_SIZE)
+            val leftTilePositon = Vector2(currentPosition.x - 1 * GRID_SIZE, currentPosition.y + 0 * GRID_SIZE)
             val upPathCost = positionAndMoveCosts[upTilePositon]!!
             val rightPathCost = positionAndMoveCosts[rightTilePositon]!!
             val downPathCost = positionAndMoveCosts[downTilePositon]!!
@@ -90,10 +90,10 @@ class Pathfinding(private val getTileCost: (Vector2) -> Int) : IPathfindingAlgor
             if (positionAndMoveCosts[currentPosition] == 0) {
                 return reverseDirections(directionsReversed)
             }
-            val upTilePositon = Vector2(currentPosition.x + 0 * GRIDSIZE, currentPosition.y + 1 * GRIDSIZE)
-            val rightTilePositon = Vector2(currentPosition.x + 1 * GRIDSIZE, currentPosition.y + 0 * GRIDSIZE)
-            val downTilePositon = Vector2(currentPosition.x + 0 * GRIDSIZE, currentPosition.y - 1 * GRIDSIZE)
-            val leftTilePositon = Vector2(currentPosition.x - 1 * GRIDSIZE, currentPosition.y + 0 * GRIDSIZE)
+            val upTilePositon = Vector2(currentPosition.x + 0 * GRID_SIZE, currentPosition.y + 1 * GRID_SIZE)
+            val rightTilePositon = Vector2(currentPosition.x + 1 * GRID_SIZE, currentPosition.y + 0 * GRID_SIZE)
+            val downTilePositon = Vector2(currentPosition.x + 0 * GRID_SIZE, currentPosition.y - 1 * GRID_SIZE)
+            val leftTilePositon = Vector2(currentPosition.x - 1 * GRID_SIZE, currentPosition.y + 0 * GRID_SIZE)
 
             val upPathCost =
                 if (positionAndMoveCosts[upTilePositon] == null) 999 else positionAndMoveCosts[upTilePositon]!!
@@ -177,16 +177,16 @@ class Pathfinding(private val getTileCost: (Vector2) -> Int) : IPathfindingAlgor
             for (tile in justComputedTiles) {
                 val currentCost = positionAndMoveCosts[tile]!!
 
-                val upTilePositon = Vector2(tile.x + 0 * GRIDSIZE, tile.y + 1 * GRIDSIZE)
+                val upTilePositon = Vector2(tile.x + 0 * GRID_SIZE, tile.y + 1 * GRID_SIZE)
                 val upTileCost = getTileCost(upTilePositon)
 
-                val rightTilePositon = Vector2(tile.x + 1 * GRIDSIZE, tile.y + 0 * GRIDSIZE)
+                val rightTilePositon = Vector2(tile.x + 1 * GRID_SIZE, tile.y + 0 * GRID_SIZE)
                 val rightTileCost = getTileCost(rightTilePositon)
 
-                val downTilePositon = Vector2(tile.x + 0 * GRIDSIZE, tile.y - 1 * GRIDSIZE)
+                val downTilePositon = Vector2(tile.x + 0 * GRID_SIZE, tile.y - 1 * GRID_SIZE)
                 val downTileCost = getTileCost(downTilePositon)
 
-                val leftTilePositon = Vector2(tile.x - 1 * GRIDSIZE, tile.y + 0 * GRIDSIZE)
+                val leftTilePositon = Vector2(tile.x - 1 * GRID_SIZE, tile.y + 0 * GRID_SIZE)
                 val leftTileCost = getTileCost(leftTilePositon)
 
 
@@ -229,16 +229,16 @@ class Pathfinding(private val getTileCost: (Vector2) -> Int) : IPathfindingAlgor
             for (tile in justComputedTiles) {
                 val currentCost = positionAndMoveCosts[tile]!!
 
-                val upTilePositon = Vector2(tile.x + 0 * GRIDSIZE, tile.y + 1 * GRIDSIZE)
+                val upTilePositon = Vector2(tile.x + 0 * GRID_SIZE, tile.y + 1 * GRID_SIZE)
                 val upTileCost = if (getTileCost(upTilePositon) < 90) 1 else getTileCost(upTilePositon)
 
-                val rightTilePositon = Vector2(tile.x + 1 * GRIDSIZE, tile.y + 0 * GRIDSIZE)
+                val rightTilePositon = Vector2(tile.x + 1 * GRID_SIZE, tile.y + 0 * GRID_SIZE)
                 val rightTileCost = if (getTileCost(rightTilePositon) < 90) 1 else getTileCost(rightTilePositon)
 
-                val downTilePositon = Vector2(tile.x + 0 * GRIDSIZE, tile.y - 1 * GRIDSIZE)
+                val downTilePositon = Vector2(tile.x + 0 * GRID_SIZE, tile.y - 1 * GRID_SIZE)
                 val downTileCost = if (getTileCost(downTilePositon) < 90) 1 else getTileCost(downTilePositon)
 
-                val leftTilePositon = Vector2(tile.x - 1 * GRIDSIZE, tile.y + 0 * GRIDSIZE)
+                val leftTilePositon = Vector2(tile.x - 1 * GRID_SIZE, tile.y + 0 * GRID_SIZE)
                 val leftTileCost = if (getTileCost(leftTilePositon) < 90) 1 else getTileCost(leftTilePositon)
 
 
@@ -274,16 +274,16 @@ class Pathfinding(private val getTileCost: (Vector2) -> Int) : IPathfindingAlgor
 
     fun getTilesAround(range: Int, position: Vector2): ArrayList<Vector2> {
         val tilePositions = ArrayList<Vector2>()
-        var iterateDirection = Vector2(1 * GRIDSIZE.toFloat(), -1 * GRIDSIZE)
-        val currentCalculatedTilePosition = Vector2(position.x, range * GRIDSIZE + position.y)
+        var iterateDirection = Vector2(1 * GRID_SIZE.toFloat(), -1 * GRID_SIZE)
+        val currentCalculatedTilePosition = Vector2(position.x, range * GRID_SIZE + position.y)
         for (i in 0..4 * range) {
             tilePositions.add(Vector2(currentCalculatedTilePosition))
-            if (currentCalculatedTilePosition == Vector2(range * GRIDSIZE + position.x, position.y)) iterateDirection =
-                Vector2(-1 * GRIDSIZE, -1 * GRIDSIZE)
-            if (currentCalculatedTilePosition == Vector2(position.x, -range * GRIDSIZE + position.y)) iterateDirection =
-                Vector2(-1 * GRIDSIZE, 1 * GRIDSIZE)
-            if (currentCalculatedTilePosition == Vector2(-range * GRIDSIZE + position.x, position.y)) iterateDirection =
-                Vector2(1 * GRIDSIZE, 1 * GRIDSIZE)
+            if (currentCalculatedTilePosition == Vector2(range * GRID_SIZE + position.x, position.y)) iterateDirection =
+                Vector2(-1 * GRID_SIZE, -1 * GRID_SIZE)
+            if (currentCalculatedTilePosition == Vector2(position.x, -range * GRID_SIZE + position.y)) iterateDirection =
+                Vector2(-1 * GRID_SIZE, 1 * GRID_SIZE)
+            if (currentCalculatedTilePosition == Vector2(-range * GRID_SIZE + position.x, position.y)) iterateDirection =
+                Vector2(1 * GRID_SIZE, 1 * GRID_SIZE)
             currentCalculatedTilePosition.add(iterateDirection)
         }
         return tilePositions
@@ -295,7 +295,7 @@ class Pathfinding(private val getTileCost: (Vector2) -> Int) : IPathfindingAlgor
         for (xCord in range downTo -range - 1 + 1) {
             for (yCord in range downTo -range - 1 + 1) {
                 if (abs(xCord.toDouble()) + abs(yCord.toDouble()) <= range) {
-                    val tilepos = Vector2(position.x + xCord * GRIDSIZE, position.y + yCord * GRIDSIZE)
+                    val tilepos = Vector2(position.x + xCord * GRID_SIZE, position.y + yCord * GRID_SIZE)
                     positionAndMoveCosts[tilepos] = 0
                 }
             }
@@ -319,7 +319,7 @@ class Pathfinding(private val getTileCost: (Vector2) -> Int) : IPathfindingAlgor
         for (xCord in range downTo -range - 1 + 1) {
             for (yCord in range downTo -range - 1 + 1) {
                 if (abs(xCord.toDouble()) + abs(yCord.toDouble()) <= range) {
-                    val tilepos = Vector2(position.x + xCord * GRIDSIZE, position.y + yCord * GRIDSIZE)
+                    val tilepos = Vector2(position.x + xCord * GRID_SIZE, position.y + yCord * GRID_SIZE)
                     positionAndMoveCosts[tilepos] = range + 1
                 }
             }

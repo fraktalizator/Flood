@@ -5,7 +5,7 @@ import com.badlogic.ashley.core.EntitySystem
 import com.badlogic.ashley.core.Family
 import com.badlogic.gdx.math.Vector2
 import com.fraktalizator.flood.entityEngine.componentes.*
-import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRIDSIZE
+import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRID_SIZE
 import com.fraktalizator.flood.entityEngine.entities.MoveTile
 import com.fraktalizator.flood.entityEngine.entities.RenderAbleEntity
 import com.fraktalizator.flood.entityEngine.systems.render.EntityRenderSystem
@@ -71,11 +71,13 @@ class MovementSystem(private val pathfindingAlgorithm: Pathfinding) : EntitySyst
                 pathDisplay(path)
             }
         moveTile.add(HoverHandlingComponent(displayPathToAction) {})
-        moveTile.getComponent(TouchHandlingComponent::class.java).LeftClickAction = Consumer<RenderAbleEntity> {
-            //worldEngineInitializer.entities.remove(currentSelectedEntity!!.getComponent(PositionComponent::class.java).position)
-            initMoveEntity(it as MoveTile)
-            disposeOldMoveTiles()
-        }
+        moveTile.add(
+            TouchHandlingComponent(
+                {initMoveEntity(it as MoveTile);disposeOldMoveTiles()},
+                {}
+            )
+        )
+
         moveTilesAndPositions[tilePosition] = moveTile
         //moveTile.add(new DisplayTextComponenet(tilesInRangePossitions.get(tile).toString()));
         super.getEngine().addEntity(moveTile)
@@ -89,7 +91,7 @@ class MovementSystem(private val pathfindingAlgorithm: Pathfinding) : EntitySyst
 
             if (currentMovingEntityPath.size == 0) {
                 val entPos: Vector2 =
-                    currentSelectedEntity!!.getComponent(PositionComponent::class.java).position.scl(1 / GRIDSIZE)
+                    currentSelectedEntity!!.getComponent(PositionComponent::class.java).position.scl(1 / GRID_SIZE)
                 //worldEngineInitializer.entities.put(entPos, currentSelectedEntity!!)
 
                 // so that entity foot wont be rendered on top of other ent head
@@ -143,7 +145,7 @@ class MovementSystem(private val pathfindingAlgorithm: Pathfinding) : EntitySyst
             currentSelectedMoveTiles[i]!!.unSelect()
         }
         for (direction in directions) {
-            pos.add(Vector2(direction.targetTilePos).scl(GRIDSIZE))
+            pos.add(Vector2(direction.targetTilePos).scl(GRID_SIZE))
             moveTilesAndPositions[pos]!!.select()
             currentSelectedMoveTiles.add(moveTilesAndPositions[pos])
         }

@@ -7,30 +7,34 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.Vector2
 import com.fraktalizator.flood.Flood
 import com.fraktalizator.flood.entityEngine.componentes.PositionComponent
-import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRIDSIZE
+import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRID_SIZE
 import com.fraktalizator.flood.entityEngine.componentes.RenderComponent
 import com.fraktalizator.flood.entityEngine.systems.MovementSystem
 import com.fraktalizator.flood.screens.flood.FloodScreen
 
-open class RenderAbleEntity(position: Vector2, texture: Texture?, animate: Boolean) : Entity() {
-    var moveCost: Int = 9999
-
+open class RenderAbleEntity(
+    position: Vector2,
+    texture: Texture?,
+    animate: Boolean
+) : Entity() {
     init {
         if (animate) {
-            add(PositionComponent(position.x, position.y, 32f, 48f))
-            add(RenderComponent(texture, zIndexByPosition, 32f, 48f))
+            val positionComponent = PositionComponent(position.x, position.y, 32f, 48f)
+            add(positionComponent)
+            add(RenderComponent(texture, 1000-positionComponent.getTilePosition().y.toInt(), 32f, 48f))
         } else {
-            add(PositionComponent(position.x, position.y, 32f, 48f))
-            add(RenderComponent(texture, zIndexByPosition))
+            add(PositionComponent(position.x, position.y, 32f, 32f))
+            add(RenderComponent(texture, 0))
         }
     }
 
     fun setZIndexByPosition() {
         getComponent(RenderComponent::class.java).zindex = (zIndexByPosition)
+        //getComponent(PositionComponent::class.java).getTilePosition().y.toInt()
     }
 
     private val zIndexByPosition: Int
-        get() = getComponent(PositionComponent::class.java).y.toInt() / GRIDSIZE.toInt()
+        get() = getComponent(PositionComponent::class.java).y.toInt() / GRID_SIZE.toInt()
 
     protected val engine: Engine
         get() = ((Gdx.app.applicationListener as Flood).getScreen() as FloodScreen).engine

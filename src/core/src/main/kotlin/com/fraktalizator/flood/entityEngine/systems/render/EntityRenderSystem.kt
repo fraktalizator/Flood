@@ -22,22 +22,13 @@ class EntityRenderSystem(
         if (!renderComponent.freezeAnimation) renderComponent.elapsedTime = (renderComponent.elapsedTime + deltaTime)
 
         batch.begin()
-        if (renderComponent.isAnimate) {
-            batch.draw(
-                renderComponent.playerAnimation[renderComponent.posFrame]
-                    .getKeyFrame(renderComponent.elapsedTime, true),
-                positionComponent.x,
-                positionComponent.y
-            )
-        } else {
-            batch.draw(
-                renderComponent.textureRegion,
-                positionComponent.x,
-                positionComponent.y,
-                positionComponent.width,
-                positionComponent.height
-            )
-        }
+
+        batch.draw(
+            renderComponent.getTexture(),
+            positionComponent.x,
+            positionComponent.y,
+        )
+
         batch.end()
 //        if (entity.getComponent(DisplayTextComponent::class.java) != null) {
 //            val text: Label = entity.getComponent(DisplayTextComponent::class.java).getLabel()

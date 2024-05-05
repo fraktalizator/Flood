@@ -1,0 +1,10 @@
+1. entity builder
+2. click hitBox by tile
+3. z index by y position
+4. different than 4x4 animations
+5. kotlin libraries
+6. UI (map loading window)
+7. UI (entity drag and drop on map)
+8. entities load from json
+9. general settings
+10. other pathfinding algorithms
