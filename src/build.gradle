@@ -32,7 +32,7 @@ allprojects {
 configure(subprojects - project(':android')) {
   apply plugin: 'java-library'
   apply plugin: 'kotlin'
-  sourceCompatibility = 11
+  sourceCompatibility = 17
   compileJava {
     options.incremental = true
   }
@@ -53,13 +53,13 @@ configure(subprojects - project(':android')) {
       assetsFile.append(it + "\n")
     }
   }
-  compileKotlin.compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+  compileKotlin.compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
 
 }
 
 subprojects {
   version = '1.0.0'
-  ext.appName = 'ExampleGame'
+  ext.appName = 'Flood'
   repositories {
     mavenCentral()
     maven { url 'https://s01.oss.sonatype.org' }
@@ -71,4 +71,4 @@ subprojects {
   }
 }
 
-eclipse.project.name = 'ExampleGame' + '-parent'
+eclipse.project.name = 'Flood' + '-parent'

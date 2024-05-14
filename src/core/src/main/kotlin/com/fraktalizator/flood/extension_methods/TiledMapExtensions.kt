@@ -2,15 +2,9 @@ package com.fraktalizator.flood.extension_methods
 
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
-import com.badlogic.gdx.math.Vector2
-import com.fraktalizator.flood.entityEngine.componentes.PositionComponent.Companion.GRID_SIZE
+import com.fraktalizator.flood.pathfinding.logic.ImmutableTile
 
-object TiledMapExtensions {
-    fun TiledMap.getMoveCost(cellPosition: Vector2): Int {
-        val cell = (layers.get(0) as TiledMapTileLayer).getCell(
-            cellPosition.x.toInt() / GRID_SIZE.toInt(),
-            cellPosition.y.toInt() / GRID_SIZE.toInt()
-        )
-        return cell?.tile?.properties?.get("moveCost")?.toString()?.toInt() ?: 9999
-    }
+fun TiledMap.getMoveCost(tile: ImmutableTile): Int {
+    val cell = (layers.get(0) as TiledMapTileLayer).getCell(tile.x(), tile.y())
+    return cell?.tile?.properties?.get("moveCost")?.toString()?.toInt() ?: 9999
 }

@@ -16,4 +16,9 @@ dependencies {
   api "io.github.libktx:ktx-preferences:$ktxVersion"
   api "io.github.libktx:ktx-scene2d:$ktxVersion"
   api "io.github.libktx:ktx-tiled:$ktxVersion"
+  testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.9.24")
+}
+
+tasks.test {
+  useJUnitPlatform()
 }

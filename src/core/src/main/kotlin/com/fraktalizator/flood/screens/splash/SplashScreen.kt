@@ -25,10 +25,12 @@ class SplashScreen : KtxScreen {
         elapsedTime += delta
 
         Flood.mainBatch.begin()
-        if (elapsedTime / splashTimerInSecs < 1) splashSprite.draw(
-            Flood.mainBatch,
-            (1 - elapsedTime / splashTimerInSecs)
-        )
+        if (elapsedTime / splashTimerInSecs < 1) {
+            splashSprite.draw(
+                Flood.mainBatch,
+                (1 - elapsedTime / splashTimerInSecs)
+            )
+        }
         Flood.mainBatch.end()
 
         if (!Assets.update()) return

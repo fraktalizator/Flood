@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.fraktalizator.flood.Flood
 import com.fraktalizator.flood.assets.Assets
-import com.fraktalizator.flood.extension_methods.Vector2Operators.minus
+import com.fraktalizator.flood.extension_methods.minus
 import ktx.app.KtxScreen
 
 abstract class BaseScreen : KtxScreen {
@@ -59,7 +59,7 @@ abstract class BaseScreen : KtxScreen {
 
     fun isPortrait() = stage.viewport.screenHeight > stage.viewport.screenWidth
 
-    fun getScreenCenter() = Vector2(Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())//.scl(1/2f)
+    fun getScreenCenter() = Vector2(Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
 
     fun getScreenCenterFor(width: Float, height: Float) = getScreenCenterFor(Vector2(width, height))
     fun getScreenCenterFor(objectSize: Vector2) = getScreenCenter() - Vector2(objectSize).scl(1 / 2f)

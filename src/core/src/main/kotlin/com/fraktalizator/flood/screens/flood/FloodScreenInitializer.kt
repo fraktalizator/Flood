@@ -1,12 +1,13 @@
 package com.fraktalizator.flood.screens.flood
 
+import com.badlogic.gdx.utils.Logger
+import com.fraktalizator.flood.ashley.WorldEngineInitializer
 import com.fraktalizator.flood.assets.Assets
-import com.fraktalizator.flood.entityEngine.WorldEngineInitializer
-import com.fraktalizator.flood.extension_methods.EnumExtensions.next
+import com.fraktalizator.flood.extension_methods.next
 import com.fraktalizator.flood.ui.settings.SettingsWindow
-import com.fraktalizator.flood.utils.Logger
 
 class FloodScreenInitializer {
+    private val logger = Logger("init")
     private var task: InitializationTasks = InitializationTasks.entries[0]
     lateinit var floodScreen: FloodScreen
         private set
@@ -18,25 +19,24 @@ class FloodScreenInitializer {
     fun update(): Boolean {
         when (task) {
             InitializationTasks.LOAD_MAPS -> {
-                Logger.log("loading maps")
+                logger.info("loading maps")
                 loadMaps()
             }
 
             InitializationTasks.LOAD_SETTINGS_AND_ENTITIES -> {
-                Logger.log("loading maps and entities")
+                logger.info("loading maps and entities")
                 loadSettingsAndEntities()
             }
 
             InitializationTasks.INITIALIZE_WORLD_MAP -> {
-                Logger.log("Initializing world")
+                logger.info("Initializing world")
                 initializeWorldMap()
             }
 
             InitializationTasks.LOAD_HUD -> {
-                Logger.log("Loading HUD")
+                logger.info("Loading HUD")
                 loadHud()
                 val worldEngineInitializer = WorldEngineInitializer(Assets.MapAssets.TutorialIsland.map)
-                worldEngineInitializer.initNPC()
                 floodScreen = FloodScreen(worldEngineInitializer, SettingsWindow())
             }
 

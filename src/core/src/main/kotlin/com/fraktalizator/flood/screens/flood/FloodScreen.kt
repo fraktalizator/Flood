@@ -3,9 +3,9 @@ package com.fraktalizator.flood.screens.flood
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.math.Vector2
-import com.fraktalizator.flood.entityEngine.WorldEngineInitializer
-import com.fraktalizator.flood.entityEngine.componentes.PositionComponent
-import com.fraktalizator.flood.entityEngine.systems.TiledMapRenderSystem
+import com.fraktalizator.flood.ashley.WorldEngineInitializer
+import com.fraktalizator.flood.ashley.systems.TiledMapRenderSystem
+import com.fraktalizator.flood.pathfinding.logic.Tile
 import com.fraktalizator.flood.screens.BaseScreen
 import com.fraktalizator.flood.ui.SettingsShowButton
 import com.fraktalizator.flood.ui.settings.SettingsWindow
@@ -18,7 +18,7 @@ class FloodScreen(
     internal val engine = worldEngineInitializer.engine
 
     //private val entityInputManager = EntityInputManager(viewport, worldEngineInitializer)
-    private val cameraSpeed = PositionComponent.GRID_SIZE * 25
+    private val cameraSpeed = Tile.SIZE * 25
 
     override fun show() {
         //Gdx.input.inputProcessor = entityInputManager
