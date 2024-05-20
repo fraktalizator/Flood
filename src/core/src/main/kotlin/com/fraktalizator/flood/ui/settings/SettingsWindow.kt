@@ -1,6 +1,7 @@
 package com.fraktalizator.flood.ui.settings
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Touchable
@@ -33,7 +34,7 @@ class SettingsWindow() : Window("", Assets.skin) {
     init {
         isMovable = false
         touchable = Touchable.enabled
-        isVisible = false
+        isVisible = true
         setBackground(TextureRegionDrawable(TextureRegion(bgTexture)))
         readSettingsDataFromFile()
         resetAllSettings.addListener(object : ClickListener() {
@@ -73,10 +74,18 @@ class SettingsWindow() : Window("", Assets.skin) {
                 saveSettings()
             }
         })
+        setSize(Flood.VIEWPORT_WIDTH / 2, Flood.VIEWPORT_HEIGHT / 2)
+    }
+
+    fun toggle(){
+        if(this.isVisible){
+            hide()
+        }else{
+            show()
+        }
     }
 
     fun show() {
-        resize()
         this.isVisible = true
         toFront()
     }
@@ -186,12 +195,16 @@ class SettingsWindow() : Window("", Assets.skin) {
         setSettingsPage(currentPage)
     }
 
+    fun size(): Vector2 {
+        return Vector2(this.width, this.height)
+    }
+
     private fun resize() {
-        setSize(Flood.VIEWPORT_WIDTH / 64 * 48, Flood.VIEWPORT_HEIGHT / 64 * 48)
-        x = Flood.VIEWPORT_WIDTH / 2 - Flood.VIEWPORT_WIDTH / 64 * 48 / 2
-        y = Flood.VIEWPORT_HEIGHT / 2 - Flood.VIEWPORT_HEIGHT / 64 * 48 / 2
-        setBounds(x, y, width, height)
+        //setSize(Flood.VIEWPORT_WIDTH / 64 * 48, Flood.VIEWPORT_HEIGHT / 64 * 48)
+        //x = Flood.VIEWPORT_WIDTH / 2 - Flood.VIEWPORT_WIDTH / 64 * 48 / 2
+        //y = Flood.VIEWPORT_HEIGHT / 2 - Flood.VIEWPORT_HEIGHT / 64 * 48 / 2
+        //setBounds(x, y, width, height)
         //settingsButtons!!.resize()
-        setSettingsPage(currentPage)
+        //setSettingsPage(currentPage)
     }
 }

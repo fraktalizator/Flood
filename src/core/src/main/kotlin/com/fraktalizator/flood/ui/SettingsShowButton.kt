@@ -16,8 +16,7 @@ class SettingsShowButton(
         setBounds(x, y, width, height)
         addListener(object : ClickListener() {
             override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean {
-                settingsWindow.show()
-                println("clicked")
+                settingsWindow.toggle()
                 return super.touchDown(event, x, y, pointer, button)
             }
         })

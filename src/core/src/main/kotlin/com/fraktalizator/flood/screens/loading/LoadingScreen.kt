@@ -2,14 +2,17 @@ package com.fraktalizator.flood.screens.loading
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.Sprite
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar
+import com.badlogic.gdx.utils.viewport.Viewport
 import com.fraktalizator.flood.assets.Assets
 import com.fraktalizator.flood.screens.BaseScreen
 import com.fraktalizator.flood.screens.flood.FloodScreen
 import com.fraktalizator.flood.screens.flood.FloodScreenInitializer
 
-class LoadingScreen : BaseScreen() {
+class LoadingScreen : BaseScreen<Stage>({ viewport: Viewport, batch: Batch -> Stage(viewport, batch) }) {
     private val backgroundSprite: Sprite
     private val progressBar: ProgressBar
     private var floodScreenInitializer = FloodScreenInitializer()
