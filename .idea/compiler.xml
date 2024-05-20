@@ -2,6 +2,18 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="ashley.ashley" target="1.7" />
+      <module name="ashley.ashley.main" target="1.7" />
+      <module name="ashley.ashley.test" target="1.7" />
+      <module name="ashley.benchmarks" target="1.7" />
+      <module name="ashley.benchmarks.main" target="1.7" />
+      <module name="ashley.benchmarks.test" target="1.7" />
+      <module name="ashley.tests" target="1.7" />
+      <module name="ashley.tests.main" target="1.7" />
+      <module name="ashley.tests.test" target="1.7" />
+      <module name="src.ashley" target="11" />
+      <module name="src.ashley.main" target="11" />
+      <module name="src.ashley.test" target="11" />
       <module name="src.html" target="11" />
       <module name="src.html.main" target="11" />
       <module name="src.html.test" target="11" />

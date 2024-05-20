@@ -22,19 +22,18 @@ class SettingsWindow() : Window("", Assets.skin) {
     private var currentPage = 0
 
 
-    private var settingsButtons: SettingsButtons? = null
-    var generalSettings: GeneralSettings? = null
-    var interfaceSettings: InterfaceSettings? = null
-    var audioSettings: AudioSettings? = null
-    var keybindingsSettings: KeybindingsSettings? = null
-    var videoSettings: VideoSettings? = null
+    private var settingsButtons: SettingsButtons
+    private lateinit var generalSettings: GeneralSettings
+    private lateinit var interfaceSettings: InterfaceSettings
+    private lateinit var audioSettings: AudioSettings
+    private lateinit var keybindingsSettings: KeybindingsSettings
+    private lateinit var videoSettings: VideoSettings
 
     private val resetAllSettings = TextButton("Reset settings to default", Assets.skin)
 
     init {
         isMovable = false
         touchable = Touchable.enabled
-        isVisible = true
         setBackground(TextureRegionDrawable(TextureRegion(bgTexture)))
         readSettingsDataFromFile()
         debug = true
@@ -76,26 +75,17 @@ class SettingsWindow() : Window("", Assets.skin) {
             }
         })
         setSize()
-        hide()
+        this.isVisible = false
     }
 
     fun toggle(){
         if(this.isVisible){
-            hide()
+            this.isVisible = false
         }else{
-            show()
+            this.isVisible = true
+            toFront()
         }
     }
-
-    private fun show() {
-        this.isVisible = true
-        toFront()
-    }
-
-    private fun hide() {
-        this.isVisible = false
-    }
-
     private fun addSettingsButtons() {
         add<SettingsButtons>(settingsButtons).expand().left().top()
             .width(width * 5 / 32)
@@ -113,57 +103,16 @@ class SettingsWindow() : Window("", Assets.skin) {
     }
 
     fun setSettingsPage(i: Int) {
+        clear()
+        addSettingsButtons()
+        currentPage = i
 
-        when (i) {
-            0 -> {
-                clear()
-
-                addSettingsButtons()
-
-                addSettingsPage(generalSettings)
-
-                currentPage = 0
-            }
-
-            1 -> {
-                clear()
-
-                addSettingsButtons()
-
-                addSettingsPage(interfaceSettings)
-
-                currentPage = 1
-            }
-
-            2 -> {
-                clear()
-
-                addSettingsButtons()
-
-                addSettingsPage(videoSettings)
-
-                currentPage = 2
-            }
-
-            3 -> {
-                clear()
-
-                addSettingsButtons()
-
-                addSettingsPage(audioSettings)
-
-                currentPage = 3
-            }
-
-            4 -> {
-                clear()
-
-                addSettingsButtons()
-
-                addSettingsPage(keybindingsSettings)
-
-                currentPage = 4
-            }
+        when (currentPage) {
+            0 -> addSettingsPage(generalSettings)
+            1 -> addSettingsPage(interfaceSettings)
+            2 -> addSettingsPage(videoSettings)
+            3 -> addSettingsPage(audioSettings)
+            4 -> addSettingsPage(keybindingsSettings)
         }
     }
 

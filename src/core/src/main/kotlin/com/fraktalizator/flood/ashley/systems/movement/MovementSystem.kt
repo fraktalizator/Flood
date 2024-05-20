@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.fraktalizator.flood.ashley.componentes.MoveComponent
 import com.fraktalizator.flood.ashley.componentes.PositionComponent
+import com.fraktalizator.flood.ashley.componentes.RenderComponent
 import com.fraktalizator.flood.extension_methods.plus
 import com.fraktalizator.flood.pathfinding.logic.Tile
 import ktx.ashley.allOf
@@ -35,13 +36,15 @@ class MovementSystem : IteratingSystem(
             moveCom.startPosition = posCom.position
         }
         val startPosition = moveCom.getCurrentStartTilePosition()
-        println("Moving ${moveCom.path}")
-        posCom.position += moveCom.path
+        val currentDirection = moveCom.path
             .getDirection()
+        posCom.position +=
+            currentDirection
             .tile
             .toVector()
             .scl(deltaTime)
             .scl(SPEED)
+        entity.get<RenderComponent>()!!.posFrame = currentDirection.ordinal
 
         val traveledDistance = abs(posCom.position.x - startPosition.x + posCom.position.y - startPosition.y)
         if (traveledDistance >= Tile.SIZE) {

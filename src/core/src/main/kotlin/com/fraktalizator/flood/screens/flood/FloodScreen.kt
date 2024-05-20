@@ -3,8 +3,13 @@ package com.fraktalizator.flood.screens.flood
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.scenes.scene2d.InputEvent
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.fraktalizator.flood.ashley.WorldEngineInitializer
 import com.fraktalizator.flood.ashley.systems.TiledMapRenderSystem
+import com.fraktalizator.flood.assets.Assets
 import com.fraktalizator.flood.pathfinding.logic.Tile
 import com.fraktalizator.flood.screens.BaseScreen
 import com.fraktalizator.flood.ui.SettingsShowButton
@@ -34,6 +39,17 @@ class FloodScreen(
         val settingsShowButton = SettingsShowButton(settingsWindow)
         settingsShowButton.setPosition(50f, 50f)
         stage.addActor(settingsShowButton)
+
+        val exitButton = ImageButton(TextureRegionDrawable(Assets.PreGameTextureAssets.EXIT_GAME_BUTTON.texture))
+        exitButton.addListener(object : ClickListener(){
+            override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                Gdx.app.exit()
+            }
+        })
+        exitButton.setPosition(100f, 50f)
+        exitButton.setSize(48f, 48f)
+        stage.addActor(exitButton)
+
     }
 
     override fun update(delta: Float) {
