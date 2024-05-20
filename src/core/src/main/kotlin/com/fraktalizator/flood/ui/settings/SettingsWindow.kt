@@ -37,6 +37,7 @@ class SettingsWindow() : Window("", Assets.skin) {
         isVisible = true
         setBackground(TextureRegionDrawable(TextureRegion(bgTexture)))
         readSettingsDataFromFile()
+        debug = true
         resetAllSettings.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent, x: Float, y: Float) {
                 resetSettingsToDefault()
@@ -74,7 +75,8 @@ class SettingsWindow() : Window("", Assets.skin) {
                 saveSettings()
             }
         })
-        setSize(Flood.VIEWPORT_WIDTH / 2, Flood.VIEWPORT_HEIGHT / 2)
+        setSize()
+        hide()
     }
 
     fun toggle(){
@@ -85,12 +87,12 @@ class SettingsWindow() : Window("", Assets.skin) {
         }
     }
 
-    fun show() {
+    private fun show() {
         this.isVisible = true
         toFront()
     }
 
-    fun hide() {
+    private fun hide() {
         this.isVisible = false
     }
 
@@ -199,12 +201,12 @@ class SettingsWindow() : Window("", Assets.skin) {
         return Vector2(this.width, this.height)
     }
 
-    private fun resize() {
-        //setSize(Flood.VIEWPORT_WIDTH / 64 * 48, Flood.VIEWPORT_HEIGHT / 64 * 48)
-        //x = Flood.VIEWPORT_WIDTH / 2 - Flood.VIEWPORT_WIDTH / 64 * 48 / 2
-        //y = Flood.VIEWPORT_HEIGHT / 2 - Flood.VIEWPORT_HEIGHT / 64 * 48 / 2
-        //setBounds(x, y, width, height)
+    private fun setSize() {
+        setSize(Flood.VIEWPORT_WIDTH / 64 * 48, Flood.VIEWPORT_HEIGHT / 64 * 48)
+        x = Flood.VIEWPORT_WIDTH / 2 - Flood.VIEWPORT_WIDTH / 64 * 48 / 2
+        y = Flood.VIEWPORT_HEIGHT / 2 - Flood.VIEWPORT_HEIGHT / 64 * 48 / 2
+        setBounds(x, y, width, height)
         //settingsButtons!!.resize()
-        //setSettingsPage(currentPage)
+        setSettingsPage(currentPage)
     }
 }

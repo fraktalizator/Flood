@@ -32,7 +32,7 @@ class FloodScreen(
         //settingsWindow.setPosition(getScreenSizeInPx().x, 100f)
         stage.addActor(settingsWindow)
         val settingsShowButton = SettingsShowButton(settingsWindow)
-        settingsShowButton.setPosition(1024f-100, 500f)
+        settingsShowButton.setPosition(50f, 50f)
         stage.addActor(settingsShowButton)
     }
 

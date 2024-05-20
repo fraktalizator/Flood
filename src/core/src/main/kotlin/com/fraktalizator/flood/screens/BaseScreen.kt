@@ -63,7 +63,7 @@ abstract class BaseScreen<T : Stage>(
     override fun resize(width: Int, height: Int) {
         val height = (width*Flood.VIEWPORT_HEIGHT/Flood.VIEWPORT_WIDTH).toInt()
         Gdx.app.log("BaseScreen (${this.javaClass.simpleName})", "settings screen size to $width x $height")
-        Gdx.graphics.setWindowedMode(width, height)
+        //Gdx.graphics.setWindowedMode(width, height)
         viewport.update(width, height, false)
         camera.update()//TODO is this line necessary
     }
